@@ -1,11 +1,11 @@
 <?php
 
-use App\Http\Controllers\BookingController;
-use App\Http\Controllers\Core\BusController;
-use App\Http\Controllers\Core\StationController;
-use App\Http\Controllers\Core\TripController;
-use App\Http\Controllers\DashboardHomeController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\Dashboard\BookingController;
+use App\Http\Controllers\Dashboard\Core\BusController;
+use App\Http\Controllers\Dashboard\Core\StationController;
+use App\Http\Controllers\Dashboard\Core\TripController;
+use App\Http\Controllers\Dashboard\DashboardHomeController;
+use App\Http\Controllers\Dashboard\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::redirect('/', 'dashboard');

@@ -32,19 +32,19 @@ class Trip extends Model
     public function fromStation()
     {
         return $this->hasOneThrough(Station::class, TripStation::class, 'trip_id', 'id', 'id', 'station_id')
-                    ->oldest('station_order');
+            ->oldest('station_order');
     }
 
     public function toStation()
     {
         return $this->hasOneThrough(Station::class, TripStation::class, 'trip_id', 'id', 'id', 'station_id')
-                    ->latest('station_order');
+            ->latest('station_order');
     }
 
     public function currentStation()
     {
         return $this->hasOneThrough(Station::class, TripStation::class, 'trip_id', 'id', 'id', 'station_id')
-                    ->oldest('station_order')
-                    ->where('current_station', true);
+            ->oldest('station_order')
+            ->where('current_station', true);
     }
 }

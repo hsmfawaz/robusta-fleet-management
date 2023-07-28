@@ -10,6 +10,7 @@ use Yajra\DataTables\Html\Column;
 class TripDatatable extends BaseDatatable
 {
     protected string $route = 'core.trips';
+
     protected ?int $defaultOrder = 6;
 
     public function query(): Builder
@@ -32,8 +33,8 @@ class TripDatatable extends BaseDatatable
     protected function filters(): array
     {
         return [
-            'from_station.name'    => fn ($i, $q) => $i->whereRelation('fromStation', 'name', 'like', "%{$q}%"),
-            'to_station.name'      => fn ($i, $q) => $i->whereRelation('fromStation', 'name', 'like', "%{$q}%"),
+            'from_station.name' => fn ($i, $q) => $i->whereRelation('fromStation', 'name', 'like', "%{$q}%"),
+            'to_station.name' => fn ($i, $q) => $i->whereRelation('fromStation', 'name', 'like', "%{$q}%"),
             'current_station.name' => fn ($i, $q) => $i->whereRelation('fromStation', 'name', 'like', "%{$q}%"),
         ];
     }
@@ -41,7 +42,7 @@ class TripDatatable extends BaseDatatable
     protected function orders(): array
     {
         return [
-            'created_at' => fn ($i, $k) => $i->orderBy('created_at', $k)
+            'created_at' => fn ($i, $k) => $i->orderBy('created_at', $k),
         ];
     }
 
@@ -49,7 +50,7 @@ class TripDatatable extends BaseDatatable
     {
         return [
             'created_at' => function ($row) {
-                return $row->created_at->format('Y-m-d')."<br>".$row->created_at->diffForHumans();
+                return $row->created_at->format('Y-m-d').'<br>'.$row->created_at->diffForHumans();
             },
         ];
     }

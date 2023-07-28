@@ -9,7 +9,7 @@ class StationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:199'
+            'name' => 'required|string|max:199',
         ];
     }
 }

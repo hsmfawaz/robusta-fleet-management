@@ -44,10 +44,10 @@ abstract class BaseDatatable extends DataTable
     protected function customColumn(string $name, string $title, $searchable = true): Column
     {
         return Column::make($name)
-                     ->title($title)
-                     ->orderable(false)
-                     ->searchable($searchable)
-                     ->content('---');
+            ->title($title)
+            ->orderable(false)
+            ->searchable($searchable)
+            ->content('---');
     }
 
     public function dataTable($query)
@@ -89,13 +89,13 @@ abstract class BaseDatatable extends DataTable
     public function html()
     {
         $builder = $this->builder()
-                        ->setTableId('base-datatable-table')
-                        ->columns($this->prepareColumns())
-                        ->minifiedAjax($this->getAjaxEndpoint())
-                        ->responsive()
-                        ->buttons(array_filter(['print']))
-                        ->dom($this->getDomVariable())
-                        ->pageLength();
+            ->setTableId('base-datatable-table')
+            ->columns($this->prepareColumns())
+            ->minifiedAjax($this->getAjaxEndpoint())
+            ->responsive()
+            ->buttons(array_filter(['print']))
+            ->dom($this->getDomVariable())
+            ->pageLength();
 
         if ($this->defaultOrder !== null) {
             $builder->orderBy($this->defaultOrder, 'desc');
@@ -109,12 +109,12 @@ abstract class BaseDatatable extends DataTable
         $indexColumn = $this->builder()->config->get('datatables.index_column', 'DT_RowIndex');
 
         return new Column([
-            'data'       => $indexColumn,
-            'name'       => $indexColumn,
-            'title'      => '#',
-            'orderable'  => false,
+            'data' => $indexColumn,
+            'name' => $indexColumn,
+            'title' => '#',
+            'orderable' => false,
             'searchable' => false,
-            'attributes'=> [
+            'attributes' => [
                 'class' => 'w-10',
             ],
         ]);
@@ -123,10 +123,10 @@ abstract class BaseDatatable extends DataTable
     protected function column(string $name, string $title, $searchable = true): Column
     {
         return Column::make($name)
-                     ->title($title)
-                     ->orderable(false)
-                     ->searchable($searchable)
-                     ->content('---');
+            ->title($title)
+            ->orderable(false)
+            ->searchable($searchable)
+            ->content('---');
     }
 
     protected function orders(): array
@@ -146,12 +146,12 @@ abstract class BaseDatatable extends DataTable
 
         if ($this->actionable !== '') {
             $list[] = Column::computed('action')
-                            ->title(__('Actions'))
-                            ->searchable(false)
-                            ->exportable(false)
-                            ->printable(false)
-                            ->width(100)
-                            ->addClass('text-center');
+                ->title(__('Actions'))
+                ->searchable(false)
+                ->exportable(false)
+                ->printable(false)
+                ->width(100)
+                ->addClass('text-center');
         }
 
         return $list;
@@ -167,7 +167,6 @@ abstract class BaseDatatable extends DataTable
 
         return $instance;
     }
-
 
     private function prepareCustomColumns()
     {
@@ -206,7 +205,7 @@ abstract class BaseDatatable extends DataTable
             $currentActions
         )) {
             $actions[] = Blade::render(File::get(__DIR__.'/actions/edit_button.blade.php'), [
-                'route'   => route($this->route.'.edit', $model),
+                'route' => route($this->route.'.edit', $model),
                 'modelID' => $this->withFormModal ? $model->getKey() : null,
             ]);
         }

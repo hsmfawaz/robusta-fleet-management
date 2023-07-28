@@ -14,10 +14,10 @@ class DashboardHomeController
     {
         return view('dashboard.home', [
             'bookings' => Booking::count(),
-            'buses'    => Bus::count(),
+            'buses' => Bus::count(),
             'stations' => Station::count(),
-            'trips'    => Trip::count(),
-            'users'    => User::whereDoesntHave('roles')->count(),
+            'trips' => Trip::count(),
+            'users' => User::whereDoesntHave('roles')->count(),
         ]);
     }
 }

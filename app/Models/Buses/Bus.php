@@ -19,7 +19,7 @@ class Bus extends Model
             foreach (range(1, 12) as $seat) {
                 $seats[] = [
                     'seat_number' => $seat,
-                    'bus_id'      => $bus->id
+                    'bus_id' => $bus->id,
                 ];
             }
             BusSeat::query()->insert($seats);

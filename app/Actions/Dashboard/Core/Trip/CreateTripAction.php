@@ -26,16 +26,16 @@ class CreateTripAction
     {
         TripStation::insert(collect($stations)->map(function ($i) use ($trip) {
             return [
-                'station_id'      => $i['id'],
-                'trip_id'         => $trip->id,
-                'station_order'   => $i['station_order'],
-                'current_station' => false
+                'station_id' => $i['id'],
+                'trip_id' => $trip->id,
+                'station_order' => $i['station_order'],
+                'current_station' => false,
             ];
         })->all());
 
         TripStation::query()
-                   ->where('trip_id', $trip->id)
-                   ->where('station_order', $currentStation)
-                   ->update(['current_station' => true]);
+            ->where('trip_id', $trip->id)
+            ->where('station_order', $currentStation)
+            ->update(['current_station' => true]);
     }
 }

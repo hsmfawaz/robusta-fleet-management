@@ -29,7 +29,7 @@ class UserDatatable extends BaseDatatable
     protected function orders(): array
     {
         return [
-            'created_at' => fn ($i, $k) => $i->orderBy('created_at', $k)
+            'created_at' => fn ($i, $k) => $i->orderBy('created_at', $k),
         ];
     }
 
@@ -37,7 +37,7 @@ class UserDatatable extends BaseDatatable
     {
         return [
             'created_at' => function ($row) {
-                return $row->created_at->format('Y-m-d')."<br>".$row->created_at->diffForHumans();
+                return $row->created_at->format('Y-m-d').'<br>'.$row->created_at->diffForHumans();
             },
         ];
     }

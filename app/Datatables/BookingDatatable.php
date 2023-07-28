@@ -10,7 +10,9 @@ use Yajra\DataTables\Html\Column;
 class BookingDatatable extends BaseDatatable
 {
     protected ?string $actionable = 'delete';
+
     protected string $route = 'bookings';
+
     protected ?int $defaultOrder = 5;
 
     public function query(): Builder
@@ -40,7 +42,7 @@ class BookingDatatable extends BaseDatatable
     protected function orders(): array
     {
         return [
-            'created_at' => fn ($i, $k) => $i->orderBy('created_at', $k)
+            'created_at' => fn ($i, $k) => $i->orderBy('created_at', $k),
         ];
     }
 
@@ -48,7 +50,7 @@ class BookingDatatable extends BaseDatatable
     {
         return [
             'created_at' => function ($row) {
-                return $row->created_at->format('Y-m-d')."<br>".$row->created_at->diffForHumans();
+                return $row->created_at->format('Y-m-d').'<br>'.$row->created_at->diffForHumans();
             },
         ];
     }

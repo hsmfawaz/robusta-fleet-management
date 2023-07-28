@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Datatables\UserDatatable;
 use App\Http\Requests\Dashboard\UserRequest;
 use App\Models\User;

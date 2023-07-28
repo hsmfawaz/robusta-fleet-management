@@ -6,12 +6,11 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class UserRequest extends FormRequest
 {
-
     public function rules(): array
     {
         $rules = [
-            'name'     => 'required|string|max:255',
-            'email'    => 'required|email|unique:users,email,'.$this->user?->id,
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,'.$this->user?->id,
             'password' => 'required|string|min:8|confirmed',
         ];
 

@@ -1,10 +1,55 @@
-# Robusta Bus
+# Welcome to Fleet Management System
 
-## Todolist
+The goal of this project is to implement a building a fleet-management system (bus-booking system) using the latest
+version of the Laravel Framework.
 
-- ~~migrations~~
-~~- admin panel~~
-~~- tests~~
-- docker
-- api
-- documentation
+## Requirements
+
+1. PHP 8.1+
+2. SQL Database MySQL or SQLite (preferred)
+
+## Installation
+
+### 1. Clone the repository
+
+### 2. Copy and replace environment variables
+
+`cp .env.example .env`
+
+### 3-1. Install dependencies
+
+`composer install` or `composer update` if you will use php 8.2+
+
+### 3-2. Or if you want to use Docker
+
+`docker-compose up -d` or `./vendor/bin/sail up`
+
+### 4. Run tests
+
+`php artisan test`
+
+### 5. Run migrations and seeders
+
+`php artisan migrate:fresh --seed`
+
+### 6. if you want dummy data
+
+`php artisan db:seed DummyDataSeeder`
+
+### 7. Run the server
+
+`php artisan serve`
+
+## Administration Area info
+
+email:`admin@admin.com`
+
+password:`secret`
+
+
+## API Documentation
+under construction
+
+
+## Database Diagram
+![Database Diagram](db_diagram.png)

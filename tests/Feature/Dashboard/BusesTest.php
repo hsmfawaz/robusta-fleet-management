@@ -7,6 +7,6 @@ it('can create a new bus', function () {
     $this->assertDatabaseHas($model->getTable(), ['id' => $model->id]);
 });
 it('can create a new bus seats', function () {
-    $trips = \App\Models\Buses\BusSeat::factory(12)->for(Bus::factory(), 'bus')->create();
-    test()->assertDatabaseCount($trips->first->getTable(), 12);
+    $models = Bus::factory()->create();
+    test()->assertDatabaseCount('bus_seats', 12);
 });

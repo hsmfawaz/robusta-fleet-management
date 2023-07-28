@@ -8,6 +8,12 @@ version of the Laravel Framework.
 Dashboard
 URL : [https://robusta-fleet-management.hisham.pro/dashboard](https://robusta-fleet-management.hisham.pro/dashboard)
 
+## Administration Area info
+
+email:`admin@admin.com`
+
+password:`secret`
+
 ## Requirements
 
 1. PHP 8.1+
@@ -48,12 +54,6 @@ URL : [https://robusta-fleet-management.hisham.pro/dashboard](https://robusta-fl
 #### 8. Run the server
 
 `php artisan serve`
-
-## Administration Area info
-
-email:`admin@admin.com`
-
-password:`secret`
 
 ## API Documentation
 

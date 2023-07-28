@@ -2,7 +2,7 @@
 
 ## Todolist
 
-- migrations
+- ~~migrations~~
 - admin panel
 - tests
 - docker

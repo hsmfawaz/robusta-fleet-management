@@ -3,6 +3,11 @@
 The goal of this project is to implement a building a fleet-management system (bus-booking system) using the latest
 version of the Laravel Framework.
 
+## Demo
+
+Dashboard
+URL : [https://robusta-fleet-management.hisham.pro/dashboard](https://robusta-fleet-management.hisham.pro/dashboard)
+
 ## Requirements
 
 1. PHP 8.1+
@@ -10,33 +15,37 @@ version of the Laravel Framework.
 
 ## Installation
 
-### 1. Clone the repository
+#### 1. Clone the repository
 
-### 2. Copy and replace environment variables
+#### 2. Copy and replace environment variables
 
 `cp .env.example .env`
 
-### 3-1. Install dependencies
+#### 3-1. Install dependencies
 
 `composer install` or `composer update` if you will use php 8.2+
 
-### 3-2. Or if you want to use Docker
+#### 3-2. Or if you want to use Docker
 
 `docker-compose up -d` or `./vendor/bin/sail up`
 
-### 4. Run tests
+#### 4. Run tests
 
 `php artisan test`
 
-### 5. Run migrations and seeders
+#### 5. Run migrations and seeders
 
 `php artisan migrate:fresh --seed`
 
-### 6. if you want dummy data
+#### 6. if you want dummy data
 
 `php artisan db:seed DummyDataSeeder`
 
-### 7. Run the server
+#### 7. Generate application key
+
+`php artisan key:generate`
+
+#### 8. Run the server
 
 `php artisan serve`
 
@@ -46,10 +55,10 @@ email:`admin@admin.com`
 
 password:`secret`
 
-
 ## API Documentation
+
 under construction
 
-
 ## Database Diagram
+
 ![Database Diagram](db_diagram.png)

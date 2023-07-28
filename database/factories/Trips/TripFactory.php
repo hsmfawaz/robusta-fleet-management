@@ -25,7 +25,8 @@ class TripFactory extends Factory
     public function definition(): array
     {
         return [
-            'bus_id' => Bus::factory(),
+            'bus_id'     => Bus::factory(),
+            'arrived_at' => $this->faker->time(),
         ];
     }
 }

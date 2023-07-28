@@ -14,7 +14,7 @@ class BusSeatFactory extends Factory
     public function definition(): array
     {
         return [
-            'bus_id'      => Bus::factory(),
+            'bus_id' => Bus::factory(),
             'seat_number' => $this->faker->numberBetween(1, 12),
         ];
     }

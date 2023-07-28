@@ -15,9 +15,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
         $this->roles();
-
         $this->setupAdmin();
     }
 
@@ -29,7 +27,7 @@ class DatabaseSeeder extends Seeder
     private function setupAdmin()
     {
         $user = User::query()->updateOrCreate(['email' => 'admin@admin.com'], [
-            'name'     => 'Administration',
+            'name' => 'Administration',
             'password' => bcrypt('secret'),
         ]);
         $user->assignRole(UserRoleEnum::Admin->value);

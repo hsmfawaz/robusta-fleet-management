@@ -13,7 +13,7 @@ class BusFactory extends Factory
     public function definition(): array
     {
         return [
-            'plate_number' => $this->faker->buildingNumber
+            'plate_number' => $this->faker->buildingNumber,
         ];
     }
 }

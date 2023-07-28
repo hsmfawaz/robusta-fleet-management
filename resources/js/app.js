@@ -1,5 +1,5 @@
 import './bootstrap';
-
+import 'laravel-datatables-vite';
 import Alpine from 'alpinejs';
 import focus from '@alpinejs/focus';
 window.Alpine = Alpine;

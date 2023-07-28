@@ -17,7 +17,7 @@ class StationFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->streetName
+            'name' => $this->faker->streetName,
         ];
     }
 }

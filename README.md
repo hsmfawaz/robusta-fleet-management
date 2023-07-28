@@ -3,8 +3,8 @@
 ## Todolist
 
 - ~~migrations~~
-- admin panel
-- tests
+~~- admin panel~~
+~~- tests~~
 - docker
 - api
 - documentation

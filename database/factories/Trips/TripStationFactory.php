@@ -19,9 +19,9 @@ class TripStationFactory extends Factory
     public function definition(): array
     {
         return [
-            'station_id'      => Station::factory(),
-            'trip_id'         => Trip::factory(),
-            'station_order'   => $this->faker->randomDigit(),
+            'station_id' => Station::factory(),
+            'trip_id' => Trip::factory(),
+            'station_order' => $this->faker->randomDigit(),
             'current_station' => $this->faker->boolean,
         ];
     }

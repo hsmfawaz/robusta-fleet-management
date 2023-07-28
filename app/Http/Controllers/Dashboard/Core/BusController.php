@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Core;
+namespace App\Http\Controllers\Dashboard\Core;
 
 use App\Datatables\Core\BusDatatable;
 use App\Http\Controllers\Controller;

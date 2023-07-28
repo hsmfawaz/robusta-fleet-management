@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Core;
+namespace App\Http\Controllers\Dashboard\Core;
 
 use App\Actions\Dashboard\Core\Trip\CreateTripAction;
 use App\Actions\Dashboard\Core\Trip\UpdateTripAction;

@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dashboard;
 
 use App\Datatables\BookingDatatable;
+use App\Http\Controllers\Controller;
 use App\Models\Booking;
 
 class BookingController extends Controller

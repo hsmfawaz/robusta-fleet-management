@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Core;
+namespace App\Http\Controllers\Dashboard\Core;
 
 use App\Datatables\Core\StationDatatable;
 use App\Http\Controllers\Controller;

@@ -56,39 +56,4 @@ class Trip extends Model
     {
         return $builder->where('arrived_at', null);
     }
-
-    public function tickets()
-    {
-        return $this->hasMany(TripTicket::class);
-    }
-
-    public function generateTickets()
-    {
-        $this->tickets()->delete();
-        $tickets = [];
-        for ($i = 0, $maxI = $this->stations->count(); $i < $maxI; $i++) {
-            $current = $this->stations[$i];
-            $next = $this->stations[$i + 1] ?? null;
-            $afterNext = $this->stations[$i + 2] ?? null;
-
-            if (! $next) {
-                continue;
-            }
-            $tickets[] = [
-                'trip_id'         => $this->id,
-                'from_station_id' => $current->station_id,
-                'to_station_id'   => $next->station_id,
-            ];
-            if (! $afterNext) {
-                continue;
-            }
-
-            $tickets[] = [
-                'trip_id'         => $this->id,
-                'from_station_id' => $current->station_id,
-                'to_station_id'   => $afterNext->station_id,
-            ];
-        }
-        $this->tickets()->createMany($tickets);
-    }
 }

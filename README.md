@@ -57,7 +57,7 @@ password:`secret`
 
 ## API Documentation
 
-under construction
+https://documenter.getpostman.com/view/3692137/2s9XxsWcWs
 
 ## Database Diagram
 

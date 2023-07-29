@@ -13,7 +13,6 @@ return new class extends Migration {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('bus_seat_id')->nullable()->constrained()->nullOnDelete();
-            $table->foreignId('trip_ticket_id')->nullable()->constrained()->nullOnDelete();
             $table->foreignId('from_station_id')->nullable()->constrained('stations')->nullOnDelete();
             $table->foreignId('to_station_id')->nullable()->constrained('stations')->nullOnDelete();
             $table->foreignId('trip_id')->nullable()->constrained()->nullOnDelete();

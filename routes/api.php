@@ -20,5 +20,6 @@ Route::group(['prefix' => 'auth'], static function () {
     Route::post('register', RegisterUserController::class);
 });
 
+
 Route::get('seats', ListAvailableSeatsController::class);
-Route::post('seats/{seat}', BookSeatController::class);
+Route::post('seats/{seat}', BookSeatController::class)->middleware('auth:sanctum');

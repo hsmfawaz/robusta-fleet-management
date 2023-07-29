@@ -30,9 +30,9 @@ class UpdateTripAction
     private function deleteStations($stationsIDX)
     {
         TripStation::query()
-                   ->where('trip_id', $this->trip->id)
-                   ->whereNotIn('station_id', $stationsIDX)
-                   ->delete();
+            ->where('trip_id', $this->trip->id)
+            ->whereNotIn('station_id', $stationsIDX)
+            ->delete();
     }
 
     private function createStations(array $stations, array $oldStations)
@@ -42,9 +42,9 @@ class UpdateTripAction
         });
         TripStation::insert($newStations->map(function ($i) {
             return [
-                'station_id'      => $i['id'],
-                'trip_id'         => $this->trip->id,
-                'station_order'   => $i['station_order'],
+                'station_id' => $i['id'],
+                'trip_id' => $this->trip->id,
+                'station_order' => $i['station_order'],
                 'current_station' => false,
             ];
         })->all());
@@ -53,9 +53,9 @@ class UpdateTripAction
     protected function setCurrentStation(int $currentStation): void
     {
         TripStation::query()
-                   ->where('trip_id', $this->trip->id)
-                   ->where('station_order', $currentStation)
-                   ->update(['current_station' => true]);
+            ->where('trip_id', $this->trip->id)
+            ->where('station_order', $currentStation)
+            ->update(['current_station' => true]);
     }
 
     protected function syncStations(array $stations, int $currentStation): void
@@ -80,7 +80,7 @@ class UpdateTripAction
                 continue;
             }
             $mapped[$station['id']]->update([
-                'station_order'   => $station['station_order'],
+                'station_order' => $station['station_order'],
                 'current_station' => false,
             ]);
         }

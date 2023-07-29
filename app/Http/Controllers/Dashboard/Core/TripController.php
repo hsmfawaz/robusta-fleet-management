@@ -56,9 +56,9 @@ class TripController extends Controller
     {
         $selectedStations = $trip?->load('stations.station')->stations
             ->map(fn ($i) => [
-                'id'              => $i->station_id,
-                'label'           => $i->station->name,
-                'station_order'   => $i->station_order,
+                'id' => $i->station_id,
+                'label' => $i->station->name,
+                'station_order' => $i->station_order,
                 'current_station' => (bool) $i->current_station,
             ])
             ->sortBy('station_order')
@@ -66,10 +66,10 @@ class TripController extends Controller
             ->toArray();
 
         return [
-            'model'       => $trip,
-            'buses'       => Bus::all()->whereDoesntHave('active_trip')
-                                ->mapWithKeys(fn ($item) => [$item->id => $item->plate_number]),
-            'stations'    => Station::all()->mapWithKeys(fn ($item) => [$item->id => $item->name]),
+            'model' => $trip,
+            'buses' => Bus::whereDoesntHave('active_trip')->get()
+                ->mapWithKeys(fn ($item) => [$item->id => $item->plate_number]),
+            'stations' => Station::all()->mapWithKeys(fn ($item) => [$item->id => $item->name]),
             'oldStations' => old('stations', $selectedStations ?? []),
         ];
     }

@@ -17,21 +17,20 @@ class RegisterUserController
 
         return response()->json([
             'status' => true,
-            'data'   => new UserResource($model)
+            'data' => new UserResource($model),
         ], Response::HTTP_CREATED);
     }
 
     protected function createUser(mixed $validated)
     {
         $model = User::create([
-            'name'     => $validated['name'],
-            'email'    => $validated['email'],
-            'password' => Hash::make($validated['password'])
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'password' => Hash::make($validated['password']),
         ]);
 
-
         $model->forceFill([
-            'token' => $model->createToken('api-token')->plainTextToken
+            'token' => $model->createToken('api-token')->plainTextToken,
         ]);
 
         return $model;

@@ -38,7 +38,7 @@ class Handler extends ExceptionHandler
 
         return response()->json([
             'status' => false,
-            'data'   => Arr::flatten($exception->errors()),
+            'data' => Arr::flatten($exception->errors()),
         ], $exception->status);
     }
 }

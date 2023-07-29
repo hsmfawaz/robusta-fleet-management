@@ -17,19 +17,18 @@ class LoginUserController
 
         if (! $model || ! Hash::check($validated['password'], $model->password)) {
             return response()->json([
-                'status'  => false,
-                'message' => 'Credentials doesnt match'
+                'status' => false,
+                'message' => 'Credentials doesnt match',
             ], 401);
         }
 
-
         $model->forceFill([
-            'token' => $model->createToken('api-token')->plainTextToken
+            'token' => $model->createToken('api-token')->plainTextToken,
         ]);
 
         return response()->json([
             'status' => true,
-            'data'   => new UserResource($model)
+            'data' => new UserResource($model),
         ]);
     }
 
@@ -38,8 +37,8 @@ class LoginUserController
         auth()->user()->tokens()->delete();
 
         return response()->json([
-            'status'  => true,
-            'message' => 'Logged out successfully'
+            'status' => true,
+            'message' => 'Logged out successfully',
         ], Response::HTTP_NO_CONTENT);
     }
 }

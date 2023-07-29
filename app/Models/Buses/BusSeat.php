@@ -40,7 +40,7 @@ class BusSeat extends Model
         $builder
             ->whereHas('trips', fn ($i) => $i->whereIn('trips.id', $trips))
             ->withCount([
-                'bookings'                  => fn ($i) => $i->where('to_station_id', $to),
+                'bookings' => fn ($i) => $i->where('to_station_id', $to),
                 'bookings as from_bookings' => fn ($i) => $i->where('from_station_id', $from),
             ])
             ->where('bookings_count', 0)

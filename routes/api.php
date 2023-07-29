@@ -7,7 +7,6 @@ use App\Http\Controllers\API\Seat\ListAvailableSeatsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
@@ -19,7 +18,6 @@ Route::group(['prefix' => 'auth'], static function () {
     });
     Route::post('register', RegisterUserController::class);
 });
-
 
 Route::get('seats', ListAvailableSeatsController::class);
 Route::post('seats/{seat}', BookSeatController::class)->middleware('auth:sanctum');

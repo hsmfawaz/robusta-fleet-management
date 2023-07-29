@@ -13,9 +13,9 @@ class BusSeatResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id'          => $this->id,
+            'id' => $this->id,
             'seat_number' => (int) $this->seat_number,
-            'bus'         => new BusResource($this->whenLoaded('bus')),
+            'bus' => new BusResource($this->whenLoaded('bus')),
         ];
     }
 }

@@ -13,7 +13,6 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class TripFactory extends Factory
 {
-
     public static function createTaskTrip()
     {
         $stations = Station::factory()->createMany([
@@ -22,7 +21,7 @@ class TripFactory extends Factory
             ['name' => 'AlMinya'],
             ['name' => 'Asyut'],
         ])->keyBy('name');
-        $trip = Trip::create(['bus_id' => Bus::factory()->create()->id,]);
+        $trip = Trip::create(['bus_id' => Bus::factory()->create()->id]);
         $trip->stations()->createMany([
             ['station_id' => $stations['Cairo']->id, 'station_order' => 0, 'current_station' => 1],
             ['station_id' => $stations['AlFayyum']->id, 'station_order' => 1, 'current_station' => 0],
@@ -37,7 +36,7 @@ class TripFactory extends Factory
     {
         return parent::configure()->afterCreating(function (Trip $trip) {
             TripStation::factory(random_int(2, 6))->create([
-                'trip_id' => $trip->id
+                'trip_id' => $trip->id,
             ]);
         });
     }
@@ -45,7 +44,7 @@ class TripFactory extends Factory
     public function definition(): array
     {
         return [
-            'bus_id'     => Bus::factory(),
+            'bus_id' => Bus::factory(),
             'arrived_at' => null,
         ];
     }

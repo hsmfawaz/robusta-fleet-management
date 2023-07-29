@@ -18,20 +18,20 @@ class BookSeatController
     {
         $validated = $request->validate([
             'from' => 'required|exists:stations,id',
-            'to'   => 'required|exists:stations,id',
+            'to' => 'required|exists:stations,id',
         ]);
 
         $booking = $this->getBooking($seat, $validated);
 
         return response()->json([
             'status' => true,
-            'data'   => new BookingResource($booking),
+            'data' => new BookingResource($booking),
         ], Response::HTTP_CREATED);
     }
 
     public function notAvailable()
     {
-        throw  ValidationException::withMessages([
+        throw ValidationException::withMessages([
             'seat' => 'Seat is not available',
         ]);
     }
@@ -42,11 +42,11 @@ class BookSeatController
         Trip $trip
     ) {
         $booking = Booking::create([
-            'bus_seat_id'     => $seat->id,
+            'bus_seat_id' => $seat->id,
             'from_station_id' => $validated['from'],
-            'trip_id'         => $trip->id,
-            'to_station_id'   => $validated['to'],
-            'user_id'         => auth()->id(),
+            'trip_id' => $trip->id,
+            'to_station_id' => $validated['to'],
+            'user_id' => auth()->id(),
         ]);
 
         $booking->load('seat.bus', 'fromStation', 'toStation');
@@ -59,9 +59,9 @@ class BookSeatController
         $stationFilter = fn ($i) => $i->whereIn('station_id', [$validated['from'], $validated['to']]);
 
         $trip = $seat->trips()
-                     ->whereHas('stations', $stationFilter)
-                     ->whereNull('arrived_at')
-                     ->first();
+            ->whereHas('stations', $stationFilter)
+            ->whereNull('arrived_at')
+            ->first();
 
         if (! $trip) {
             $this->notAvailable();
@@ -75,8 +75,8 @@ class BookSeatController
         try {
             return Cache::lock("book-seat-{$seat->id}", 10)->block(10, function () use ($validated, $seat) {
                 $seatAvailable = $seat->available($validated['from'], $validated['to'])
-                                      ->where('id', $seat->id)
-                                      ->exists();
+                    ->where('id', $seat->id)
+                    ->exists();
 
                 if (! $seatAvailable) {
                     $this->notAvailable();

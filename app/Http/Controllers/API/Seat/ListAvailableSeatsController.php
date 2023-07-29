@@ -12,14 +12,14 @@ class ListAvailableSeatsController
     {
         $validated = $request->validate([
             'from' => 'required|exists:stations,id',
-            'to'   => 'required|exists:stations,id',
+            'to' => 'required|exists:stations,id',
         ]);
 
         $seats = BusSeat::available($validated['from'], $validated['to'])->with('bus')->simplePaginate();
 
         return response()->json([
             'status' => true,
-            'data'   => BusSeatResource::paginate($seats)
+            'data' => BusSeatResource::paginate($seats),
         ]);
     }
 }

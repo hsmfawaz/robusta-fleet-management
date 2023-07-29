@@ -13,7 +13,8 @@ trait WithPagination
             return self::collection($resource);
         }
 
-        return new class($resource, self::class, $wrapper) extends ResourceCollection {
+        return new class($resource, self::class, $wrapper) extends ResourceCollection
+        {
             public string $wrapper;
 
             public function __construct($resource, string $collects, $wrapper = 'items')
@@ -27,12 +28,12 @@ trait WithPagination
             {
                 return [
                     $this->wrapper => $this->collection,
-                    'paginate'     => [
-                        'count'         => $this->count(),
-                        'per_page'      => $this->perPage(),
+                    'paginate' => [
+                        'count' => $this->count(),
+                        'per_page' => $this->perPage(),
                         'next_page_url' => $this->nextPageUrl() ?? '',
                         'prev_page_url' => $this->previousPageUrl() ?? '',
-                        'current_page'  => $this->currentPage(),
+                        'current_page' => $this->currentPage(),
                     ],
                 ];
             }

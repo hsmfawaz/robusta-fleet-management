@@ -41,17 +41,13 @@ password:`secret`
 
 #### 5. Run migrations and seeders
 
-`php artisan migrate:fresh --seed`
+`php artisan key:generate && php artisan migrate:fresh --seed`
 
 #### 6. if you want dummy data
 
 `php artisan db:seed DummyDataSeeder`
 
-#### 7. Generate application key
-
-`php artisan key:generate`
-
-#### 8. Run the server
+#### 7. Run the server
 
 `php artisan serve`
 

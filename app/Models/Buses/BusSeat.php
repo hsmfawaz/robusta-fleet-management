@@ -4,7 +4,6 @@ namespace App\Models\Buses;
 
 use App\Models\Booking;
 use App\Models\Trips\Trip;
-use App\Models\Trips\TripStation;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -35,8 +34,18 @@ class BusSeat extends Model
 
     public function scopeAvailable(Builder $builder, $from, $to)
     {
-        $trips = TripStation::query()->whereIn('station_id', [$from, $to])->pluck('trip_id')->toArray();
-
+        $trips = Trip::query()
+                     ->join('trip_stations as from', function ($join) use ($from) {
+                         $join->on('trips.id', '=', 'from.trip_id')
+                              ->where('from.station_id', $from);
+                     })
+                     ->join('trip_stations as to', function ($join) use ($to) {
+                         $join->on('trips.id', '=', 'to.trip_id')
+                              ->where('to.station_id', $to);
+                     })
+                     ->where('from.station_order', '<=', 'to.station_order')
+                     ->pluck('trips.id')
+                     ->toArray();
         $builder
             ->whereHas('trips', fn ($i) => $i->whereIn('trips.id', $trips))
             ->whereDoesntHave('bookings', fn ($i) => $i->where('to_station_id', $to))
